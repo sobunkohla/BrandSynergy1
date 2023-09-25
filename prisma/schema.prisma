@@ -1,0 +1,77 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model MarketSpace {
+  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String
+  businessName     String
+  imageUrl         String?
+  location         String?
+  description      String?
+  industry         String?
+  businessType     String?
+  investment       Float?
+  yearFounded      Int?
+  businessGoals    String?
+  targetAudience   String?
+  productsServices String?
+  uniqueSellingProposition String?
+  team             Int?
+
+  // Relations
+  businessStrategies BusinessStrategy[]
+  brandingStrategies BrandingStrategy[]
+  userLevelProgress  UserLevelProgress?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BusinessStrategy {
+  id            String                    @id @default(auto()) @map("_id") @db.ObjectId
+  marketSpaceId String @db.ObjectId
+  title String
+  description String?
+   advice     String?
+   recources String?
+  marketSpace   MarketSpace               @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+model BrandingStrategy {
+  id            String                    @id @default(auto()) @map("_id") @db.ObjectId
+  marketSpaceId String @db.ObjectId
+  title String
+  description String?
+   advice     String?
+   recources String?
+  marketSpace   MarketSpace               @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model UserLevelProgress {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  marketSpaceId         String  @unique @db.ObjectId
+  level                 Int // Current user level
+  requirements          Json // Requirements needed to advance to the next level
+  businessStrategyCount Int? // Number of created business strategies
+  brandingStrategyCount Int ?// Number of created branding strategies
+  lastModified          DateTime @updatedAt
+  // Additional fields if needed
+
+  // Relations
+  marketSpace MarketSpace @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
+}
