@@ -11,18 +11,17 @@ model MarketSpace {
   id               String  @id @default(auto()) @map("_id") @db.ObjectId
   userId           String
   businessName     String
-  imageUrl         String?
   location         String?
   description      String?
   industry         String?
   businessType     String?
-  investment       Float?
+  investment       String?
   yearFounded      Int?
   businessGoals    String?
   targetAudience   String?
   productsServices String?
   uniqueSellingProposition String?
-  team             Int?
+  team             String?
 
   // Relations
   businessStrategies BusinessStrategy[]
@@ -38,6 +37,7 @@ model BusinessStrategy {
   marketSpaceId String @db.ObjectId
   title String
   description String?
+  type String?
    advice     String?
    recources String?
   marketSpace   MarketSpace               @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
@@ -53,7 +53,8 @@ model BrandingStrategy {
   marketSpaceId String @db.ObjectId
   title String
   description String?
-   advice     String?
+  type String?
+   advice     String? 
    recources String?
   marketSpace   MarketSpace               @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
 

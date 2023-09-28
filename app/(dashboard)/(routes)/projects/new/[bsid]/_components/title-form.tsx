@@ -52,7 +52,7 @@ const { isSubmitting , isValid } = form.formState;
 
 const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`api/marketspaces/${marketspaceId}`, values)
+      await axios.patch(`/api/marketspaces/${marketspaceId}`, values)
        toast.success("Market Space updated successfully");
        toggleEdit()
        router.refresh();

@@ -23,17 +23,22 @@ import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 import toast from "react-hot-toast";
 
-export default function Projects() {
+
+export default function BusinessStrategySetup({
+    params,
+  }: {
+    params: { bsid: string };
+  }) {
   const router = useRouter()
   const formSchema = z.object({
-    businessName: z.string().min(1, {
-      message: "Business name must be at least 1 character",
+    title: z.string().min(1, {
+      message: "title must be at least 1 character",
     }),
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      businessName: "",
+      title: "",
     },
   });
 
@@ -41,9 +46,9 @@ export default function Projects() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post('/api/marketspaces', values );
-       router.push(`/projects/new/${response.data.id}`);
-       toast.success("Market Space created successfully");
+      const response = await axios.post(`/api/marketspaces/${params.bsid}/businessstrategies`, values );
+       router.push(`/projects/${params.bsid}/strategies/business/new/${response.data.id}`);
+       toast.success("Business Strategy created successfully");
     } catch  {
       toast.error('something went wrong')
     }
@@ -52,7 +57,7 @@ export default function Projects() {
   return (
     <div className="py-12 px-4 ">
       <Heading
-        title="New Market Space"
+        title="New Business Strategy"
         description="elevate your ventures with insights tailored to to your business. "
         icon={LayoutDashboard}
         iconColor="text-orange-400"
@@ -60,9 +65,9 @@ export default function Projects() {
       />
       <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6 ">
         <div className="">
-          <h1 className="text-2xl">Name Your Market Space</h1>
+          <h1 className="text-2xl">Name Your Business Strategy</h1>
           <p className="text-sm text-slate-600">
-            What would you like to name your market space? Don't worry , you can
+            What would you like to name you rBusiness Strategy? Don't worry , you can
             change this later.
           </p>
           <Form {...form}>
@@ -72,7 +77,7 @@ export default function Projects() {
             >
               <FormField
                 control={form.control}
-                name="businessName"
+                name="title"
                 render={({ field }) => (<FormItem>
                   <FormLabel>
                   Market Space Title
@@ -80,12 +85,12 @@ export default function Projects() {
                   <FormControl>
                     <Input
                     disabled={isSubmitting} 
-                    placeholder="e.g BrandSynegy Market"
+                    placeholder="e.g social network marketing"
                     {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                      what business is in this market?
+                      what will this business strategy focus on??
                     </FormDescription>
                     <FormMessage/>
                 </FormItem>

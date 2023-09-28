@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 
-const CreateMarketSpacePage: React.FC = () => {
+const CreateMarketSpacePage = ({
+  params,
+}: {
+  params: { bsid: string };
+}) => {
   // ... Previous code for business information form ...
 
   return (
@@ -19,7 +23,7 @@ const CreateMarketSpacePage: React.FC = () => {
               Elevate your personal or business brand with expert strategies.
             </p>
             {/* Add an image here */}
-            <Link href='branding/'>
+            <Link href={`/projects/${params.bsid}/strategies/branding`}>
             <button
               className="bg-transparent border border-white text-white py-2 px-4 rounded-lg hover:bg-white hover:text-orange-500 transition duration-300"
               
@@ -36,7 +40,7 @@ const CreateMarketSpacePage: React.FC = () => {
               Gain insights and plans to grow and succeed in your industry.
             </p>
             {/* Add an image here */}
-            <Link href='business'>
+            <Link href={`/projects/${params.bsid}/strategies/business`}>
 
             <button
               className="bg-transparent border border-white text-white py-2 px-4 rounded-lg hover:bg-white hover:text-orange-500 transition duration-300"

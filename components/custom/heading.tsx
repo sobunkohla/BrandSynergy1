@@ -20,7 +20,7 @@ function Heading({
       <div className={cn("p-2 w-fit rounded-md", bgColor)}>
         <Icon className={cn("w-10 h-10", iconColor)} />
       </div>
-      <div>
+      <div className=" gap-y-2">
         <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
         <p className="text-muted-foreground text-sm">{description}</p>
       </div>
