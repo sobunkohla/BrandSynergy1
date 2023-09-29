@@ -4,7 +4,7 @@ import { NextResponse } from "next/server"
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { courseId: string } }
+    { params }: { params: { marketspaceId: string } }
   ) {
     try {
       const { userId } = auth();
@@ -15,7 +15,7 @@ export async function DELETE(
   
       const marketspace = await db.marketSpace.findUnique({
         where: {
-          id: params.courseId,
+          id: params.marketspaceId,
           userId: userId,
         }
       });
@@ -28,7 +28,7 @@ export async function DELETE(
   
       const deletedMarketSpace = await db.marketSpace.delete({
         where: {
-          id: params.courseId,
+          id: params.marketspaceId,
         },
       });
   

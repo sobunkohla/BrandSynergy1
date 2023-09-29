@@ -5,7 +5,7 @@ import { BookOpen } from "lucide-react";
 
 
 
-export default function StrategyCard({ strategy , marketspaceId}: {
+export default function StrategyCardBranding({ strategy , marketspaceId}: {
     strategy: {
       id: string;
       marketSpaceId: string;
@@ -20,7 +20,7 @@ export default function StrategyCard({ strategy , marketspaceId}: {
     marketspaceId: string
 }) {
   return (
-    <Link href={`/projects/${marketspaceId}/strategies/business/${strategy.id}`}>
+    <Link href={`/projects/${marketspaceId}/strategies/branding/${strategy.id}`}>
     <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full "
             >
             <div className=" relative w-full aspect-video rounded-md overflow-hidden">

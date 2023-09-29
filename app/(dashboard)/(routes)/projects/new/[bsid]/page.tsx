@@ -18,6 +18,7 @@ import { TeamForm } from "./_components/team-form";
 import { YearFoundedForm } from "./_components/year-founded-form";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FaArrowLeft } from "react-icons/fa";
 
 const CreateMarketSpacePage = async ({
   params,
@@ -66,6 +67,13 @@ const CreateMarketSpacePage = async ({
           <span className="text-sm text-slate-700">
             complete all fields {completionText}
           </span>
+        </div>
+        <div className="">
+        <Link href={`/projects/`}>
+          <Button className="flex items-center text-white hover:scale-110 active:scale-95 transition-all bg-orange-600 ">
+            <FaArrowLeft size={20} className="mr-2" /> cancel 
+          </Button>
+        </Link>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 ">

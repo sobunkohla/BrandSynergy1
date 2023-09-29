@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(
     req:Request,
-    {params } : { params: { marketspaceId : string, businessId : string}}
+    {params } : { params: { marketspaceId : string, brandingId : string}}
      )  {
         try {
             const { userId } = auth();
@@ -27,9 +27,9 @@ export async function PATCH(
             }
               
 
-            const businessStrategy = await db.businessStrategy.update({
+            const brandingStrategy = await db.brandingStrategy.update({
               where : {
-                id : params.businessId,
+                id : params.brandingId,
                 marketSpaceId: params.marketspaceId,
             },
                 data: {
@@ -37,7 +37,7 @@ export async function PATCH(
                 },
             })
              
-             return NextResponse.json(businessStrategy)
+             return NextResponse.json(brandingStrategy)
 
         } catch (err) {
             console.log("[MARKETSPACES]", err);
@@ -47,7 +47,7 @@ export async function PATCH(
 
      export async function DELETE(
         req: Request,
-        { params }: { params: { marketspaceId: string, businessId : string } }
+        { params }: { params: { marketspaceId: string, brandingId : string } }
       ) {
         try {
           const { userId } = auth();
@@ -68,24 +68,25 @@ export async function PATCH(
           }
       
          
-          const businessStrategy = await db.businessStrategy.findUnique({
+          const brandingStrategy = await db.brandingStrategy.findUnique({
             where: {
-              id: params.businessId,
+              id: params.brandingId,
               marketSpaceId:params.marketspaceId
               
             }
           });
       
-          if (!businessStrategy) {
+          if (!brandingStrategy) {
             return new NextResponse("Not found", { status: 404 });
           }
-          const deletedBusinessStrategy = await db.businessStrategy.delete({
+          const deletedBrandingStrategy = await db.brandingStrategy.delete({
             where: {
-                id: params.businessId,
+                id: params.brandingId,
+                marketSpaceId: params.marketspaceId
             },
           });
       
-          return NextResponse.json(deletedBusinessStrategy);
+          return NextResponse.json(deletedBrandingStrategy);
         } catch (error) {
           console.log("[COURSE_ID_DELETE]", error);
           return new NextResponse("Internal Error", { status: 500 });

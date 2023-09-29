@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Heading from "@/components/custom/heading";
-import { FormInput, LayoutDashboard } from "lucide-react";
+import { FormInput, LayoutDashboard, Loader } from "lucide-react";
 import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 import toast from "react-hot-toast";
@@ -38,7 +38,7 @@ export default function Projects() {
   });
 
   const { isSubmitting, isValid } = form.formState;
-
+const isLoading = form.formState.isSubmitting
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await axios.post('/api/marketspaces', values );
@@ -105,6 +105,14 @@ export default function Projects() {
                    </Button>
               </div>
             </form>
+            <div
+      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${
+        isLoading ? "block" : "hidden"
+      }`}
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+    >
+      <Loader className="text-white animate-spin" size={48} />
+    </div>
           </Form>
         </div>
       </div>

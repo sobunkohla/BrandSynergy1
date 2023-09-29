@@ -1,5 +1,8 @@
+import Heading from '@/components/custom/heading';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import React from 'react';
+import { FaArrowLeft, FaMountain } from 'react-icons/fa';
 
 const CreateMarketSpacePage = ({
   params,
@@ -11,7 +14,14 @@ const CreateMarketSpacePage = ({
   return (
     <div className="container mx-auto p-8">
       {/* ... Previous code ... */}
-
+      <div className='flex items-center justify-between'>
+         <Heading title='Choose Your Strategy' icon={FaMountain} bgColor='bg-orange-200' iconColor='text-white' description='choose a path to take with your business'/>
+         <Link href={`/projects/`}>
+          <Button className="flex items-center text-white hover:scale-110 active:scale-95 transition-all bg-orange-600 ">
+            <FaArrowLeft size={20} className="mr-2" /> Back
+          </Button>
+        </Link>
+      </div>
       {/* Continue to the next page */}
       <div className="bg-white rounded-lg shadow p-6">
         <h2 className="text-xl font-semibold mb-4">Choose Your Path</h2>
