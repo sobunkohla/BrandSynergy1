@@ -3,18 +3,22 @@ import { PersonalDev } from "@prisma/client";
 export function req (PersonalDev:PersonalDev|null ) {
     let requirements = {
         followers : {
+          name:'followers',
           number : '1000',
           complete :false
         },
         Posts : {
+          name:'posts',
           number : '100',
           complete :false
         },
         leads : {
+          name:'leads',
           number : '4',
           complete :false
         },
         Colaborations : {
+          name:'collaborations',
           number : '2',
           complete :false
         },
@@ -23,18 +27,22 @@ export function req (PersonalDev:PersonalDev|null ) {
       if ( PersonalDev?.level === 'Beginner') {
         requirements = {
           followers : {
+            name:'followers',
             number : '1000',
             complete :false
           },
           Posts : {
+            name:'posts',
             number : '100',
             complete :false
           },
           leads : {
+             name:'leads',
             number : '4',
             complete :false
           },
           Colaborations : {
+            name:'collaborations',
             number : '2',
             complete :false
           },
@@ -44,18 +52,23 @@ export function req (PersonalDev:PersonalDev|null ) {
    if (PersonalDev?.level === 'Online Presence') {
        requirements = {
         followers : {
+          name:'followers',
           number : '15000',
           complete :false
         },
         Posts : {
+          name:'posts',
           number : '400',
           complete :false
         },
         leads : {
+           name:'leads',
           number : '10',
           complete :false
         },
         Colaborations : {
+          name:'collaborations',
+
           number : '5',
           complete :false
         },
@@ -64,18 +77,22 @@ export function req (PersonalDev:PersonalDev|null ) {
      if (PersonalDev?.level === 'Content Creation') {
       requirements = {
         followers : {
+          name:'followers',
           number : '200000',
           complete :false
         },
         Posts : {
+          name:'posts',
           number : '800',
           complete :false
         },
         leads : {
+           name:'leads',
           number : '55',
           complete :false
         },
         Colaborations : {
+          name:'collaborations',
           number : '9',
           complete :false
         },
@@ -83,18 +100,22 @@ export function req (PersonalDev:PersonalDev|null ) {
     }  if (PersonalDev?.level === 'Networking and Engagement') {
        requirements = {
         followers : {
+          name:'followers',
           number : '600000',
           complete :false
         },
         Posts : {
+          name:'posts',
           number : '1200',
           complete :false
         },
         leads : {
+           name:'leads',
           number : '195',
           complete :false
         },
         Colaborations : {
+          name:'collaborations',
           number : '9',
           complete :false
         },
@@ -102,18 +123,22 @@ export function req (PersonalDev:PersonalDev|null ) {
     }    if (PersonalDev?.level === 'Thought Leadership'){
        requirements = {
         followers : {
+          name:'followers',
           number : '1000000',
           complete :false
         },
         Posts : {
+          name:'posts',
           number : '3200',
           complete :false
         },
         leads : {
+           name:'leads',
           number : '700',
           complete :false
         },
         Colaborations : {
+          name:'collaborations',
           number : '29',
           complete :false
         },

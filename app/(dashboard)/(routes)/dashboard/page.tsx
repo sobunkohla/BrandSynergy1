@@ -1,6 +1,4 @@
 
-
-import { MainProgress, requirements } from "@/assets/data";
 import ProgressCard from "@/components/custom/progresscard";
 import ProgressCircle from "@/components/custom/progresscircle";
 import ReqCard from "@/components/custom/reqcard";
@@ -12,24 +10,13 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib";
 import { PlusIcon } from "lucide-react";
 import NewProfile from "./_components/new-profile";
-import Heading from "@/components/custom/heading";
-import { FaRobot } from "react-icons/fa";
+import { FaCalendarCheck, FaCheckSquare, FaHandshake, FaRobot, FaUsers } from "react-icons/fa";
+import { req } from "@/lib/requirements";
 
 
-const reqCopy = requirements.slice(0, 4);
 
-async function getData(): Promise<any[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ]
-}
+
+
 
 export default async function DashboardPage() {
   const { userId} = auth();
@@ -54,8 +41,50 @@ export default async function DashboardPage() {
 
   })
 
+  let requirements = req(PersonalDev);
+ let  completed = 0;
+ if (requirements.Colaborations.complete) {
+  completed += 1;
+ }
+ if (requirements.Posts.complete) {
+  completed += 1;
+ }
+  
+ if (requirements.followers.complete) {
+  completed += 1;
+ }
  
+ if (requirements.leads.complete) {
+  completed += 1;
+ }
 
+  const MainProgress = [
+    {
+        title: 'followers',
+        number: `${PersonalDev?.followers}`,
+        icon: <FaUsers/>,
+        
+    },
+    {
+        title: 'posts',
+        number: `${PersonalDev?.posts}`,
+        icon: <FaCalendarCheck/>,
+        
+    },
+    {
+        title: 'Leads',
+        number: `${PersonalDev?.leads}`,
+        icon: <FaCheckSquare/>,
+        
+    },
+    {
+        title: 'Colaborations',
+        number: `${PersonalDev?.colaborations}`,
+        icon: <FaHandshake/>,
+        
+    },
+
+]
   return (
     <div className="min-h-[100%] h-full gap-y-4 flex flex-col bg-gray-100 p-8">
     {!PersonalDev ? (
@@ -80,12 +109,12 @@ export default async function DashboardPage() {
         <div className="w-full bg-white px-4 py-8 rounded-xl shadow-lg  ">
 
           <div className=" flex md:flex-row-reverse items-center flex-col sm: space-y-2 ">
-            <ProgressCircle />
+            <ProgressCircle comp={completed} />
             <div className="w-full space-y-2  pr-8">
               <div className="flex justify-between items-end ">
                 <h2 className="text-2xl text-orange-600   lg:text-4xl font-bold">
                   {" "}
-                  Beginner{" "}
+                 {PersonalDev.level}{" "}
                 </h2>
                 <Link href='/personal'>
                 <button className="text-xs px-2 py-2 bg-orange-600 shadow-lg hover:bg-gray-200 hover:text-orange-600 transition-all  text-white rounded-full">
@@ -94,12 +123,15 @@ export default async function DashboardPage() {
                 </Link>
               </div>
               <p className=" text-sm text-muted-foreground">
-                Personal Branding level
+                Personal Branding level Requirements
               </p>
               <div className="gap-x-4 space-y-2 flex items-center flex-wrap justify-center">
-                {reqCopy.map((requirement) => (
-                  <ReqCard req={requirement} key={requirement.title} />
-                ))}
+                
+                  <ReqCard req={requirements.followers}  />
+                  <ReqCard req={requirements.Posts}  />
+                  <ReqCard req={requirements.Colaborations}  />
+                  <ReqCard req={requirements.leads}  />
+                
               </div>
               
             </div>

@@ -1,15 +1,15 @@
 'use client'
 
-import { requirements } from '../../assets/data'
 
 
-export default function ProgressCircle() {
-    let counter = 0;
-   let  percent = 0;
-   let  completeInt = 0;
-    requirements.map(requirement => requirement.complete && completeInt++);
-    percent = Math.floor((completeInt/requirements.length) * 100);
-    completeInt = Math.floor(472 - (472 * (completeInt/requirements.length)));
+
+export default function ProgressCircle({comp } : {
+  comp: number
+}) {
+  
+
+   const percent = Math.floor((comp/4) * 100);
+    comp = Math.floor(472 - (472 * (comp/4)));
     
   return (
     <div>
@@ -31,7 +31,7 @@ export default function ProgressCircle() {
                <stop offset="100%" stop-color="#673ab7" />
             </linearGradient>
          </defs>
-         <circle cx="80" cy="80" r="70" id="circle" style={{ strokeDashoffset : `${ completeInt}px`}} stroke-linecap="round" />
+         <circle cx="80" cy="80" r="70" id="circle" style={{ strokeDashoffset : `${ comp}px`}} stroke-linecap="round" />
  </svg>
  </div>
     </div>
