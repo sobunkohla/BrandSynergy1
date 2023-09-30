@@ -67,7 +67,7 @@ const isLoading = form.formState.isSubmitting;
         <div className="">
           <h1 className="text-2xl">Name Your Branding Strategy</h1>
           <p className="text-sm text-slate-600">
-            What would you like to name your Branding Strategy? Don't worry , you can
+            What would you like to name your Branding Strategy? Don&apos;t worry , you can
             change this later.
           </p>
           <Form {...form}>

@@ -15,7 +15,7 @@ export default function ReqCard({ req } : { req : {
             }
             <div className="">
                 <h2 className=" font-bold text-md">{req.number}</h2>
-                <p className="text-sm max-w-[400px] whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px]">{req.name}</p>
+                <p className="text-sm  whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px]">{req.name}</p>
             </div>
         </div>
     </div>

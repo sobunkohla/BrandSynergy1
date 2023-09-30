@@ -39,7 +39,7 @@ export const LandingHero = () => {
         </Link>
       </div>
       <div className="text-gray-200 text-xs md:text-sm font-normal">
-        get started now, don't wait
+        get started now, don&apos;t wait
       </div>
     </div>
   );

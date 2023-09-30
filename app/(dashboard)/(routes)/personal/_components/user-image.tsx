@@ -1,6 +1,7 @@
 'use client'
 
 import { UserButton, useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
 
 
@@ -13,7 +14,7 @@ export default function UserImage({ level } : {
     <>
     {isLoaded && isSignedIn && (
         <div className="flex  items-center">
-        <img
+        <Image
         src={user.imageUrl}
         alt={`${user.username}'s profile`}
         className="w-16 h-16 rounded-full mr-4"
