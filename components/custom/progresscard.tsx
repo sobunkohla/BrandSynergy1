@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default function ProgressCard({item}) {
+export default function ProgressCard({ item } : {
+  item: {
+    title: string;
+    number: string;
+    icon: JSX.Element;
+}
+}) {
   return (
     <div className="flex bg-white py-8 rounded-xl w-full max-w-[300px] px-12 justify-between mt-4">
         <div className="flex gap-4">
