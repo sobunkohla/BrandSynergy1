@@ -13,7 +13,6 @@ export default function StrategyCard({ strategy , marketspaceId}: {
       description: string | null;
       type: string | null;
       advice: string | null;
-      recources: string | null;
       createdAt: Date;
       updatedAt: Date;
     },
