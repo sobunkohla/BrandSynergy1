@@ -15,7 +15,6 @@ import PostsFormPage from "./_components/posts-form";
 import LeadsFormPage from "./_components/leads-form";
 import CollaborationsFormPage from "./_components/colaborations-form";
 import UserImage from "./_components/user-image";
-import { refresh } from "./_components/refresh";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Card } from "@/components/ui/card";
