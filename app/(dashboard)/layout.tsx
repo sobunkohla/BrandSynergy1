@@ -1,3 +1,5 @@
+'use client'
+
 import NavBar from "@/components/custom/navbar";
 import SideBar from "@/components/custom/sidebar";
 
@@ -7,6 +9,9 @@ export default function layout({
 } : {
     children: React.ReactNode;
 }) {
+
+
+
   return (
     <div className="h-full relative ">
         <div className="hidden h-full lg:flex lg:w-72 lg:flex-col 

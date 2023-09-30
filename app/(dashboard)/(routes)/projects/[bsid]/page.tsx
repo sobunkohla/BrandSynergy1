@@ -59,8 +59,8 @@ const MarketSpaceProfile = async ({
       <div className="container space-y-6 ">
         <div className="space-y-2  ">
           <Heading
-            description=" Manage your Business strategy tailored to revolutionise business strategy "
-            title="Business Strategy"
+            description=" Manage your Market Spaces tailored to revolutionize the way you build your business "
+            title="Market Space"
             icon={FaUser}
             bgColor="bg-orange-200"
             iconColor="text-orange-600"
@@ -80,7 +80,7 @@ const MarketSpaceProfile = async ({
             </Link> 
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-orange-500 ">Delete Strategy</Button>
+            <Button className="bg-orange-500 ">Delete Space</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -116,7 +116,9 @@ const MarketSpaceProfile = async ({
               </div>
               <p className="ml-4 font-bold text-lg">{marketspace.businessName}</p>
             </div>
-            <FaBullseye className="text-orange-600" />
+            <div className=" flex items-center gap-x-2 justify-center">
+            <FaBullseye className="text-orange-600" /> <span className="font-bold">Edit</span>
+            </div>
           </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

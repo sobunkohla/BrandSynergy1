@@ -40,12 +40,7 @@ const bottomRoutes = [
     href: "/projects/new",
     color: "text-orange-500",
   },
-  {
-    label: "Settings",
-    icon: FaCog,
-    href: "/settings",
-    color: "text-orange-500",
-  },
+
 ];
 
 export default function SideBar() {

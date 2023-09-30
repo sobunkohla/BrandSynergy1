@@ -297,7 +297,9 @@ function toggleEdit () {
             router.refresh();
             router.push(`/projects/${marketSpace.id}/strategies/business/${businessStrategy.id}`);
         } catch  {
+          toggleEdit()
           toast.error('something went wrong')
+          
         }
       }
 

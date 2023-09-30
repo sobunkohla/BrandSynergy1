@@ -54,37 +54,14 @@ const BusinessProfile = async ({
     return redirect("/");
   }
 
-  function formatBusinessPlanText(unformattedText: string) {
-    // Split the text into sections based on double asterisks (**) for headings
-    const sections = unformattedText.split("**");
-
-    // Initialize formatted text with the first section as a heading
-    let formattedText = `<h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">${sections[0]}</h2>`;
-
-    // Loop through the remaining sections and format them as headings, paragraphs, or lists
-    for (let i = 1; i < sections.length; i += 2) {
-      const heading = sections[i].trim();
-      const content = sections[i + 1].trim();
-
-      // Check if the content contains line breaks or asterisks to format as a list
-      if (content.includes("\n") || content.includes("* ")) {
-        const listItems = content.split("\n").map((item) => item.trim());
-        const listItemsHTML = listItems
-          .map((item) => `<li>${item}</li>`)
-          .join("");
-        formattedText += `<h3 style="font-size: 20px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">${heading}</h3><ul>${listItemsHTML}</ul>`;
-      } else {
-        formattedText += `<h3 style="font-size: 20px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">${heading}</h3><p>${content}</p>`;
-      }
-
-      // Add a line break after each section
-      formattedText += "<br>";
-    }
-
-    return formattedText;
+  function formatTextWithBold(apiText:string) {
+    // Use a regular expression to find text enclosed in double asterisks
+    const boldText = apiText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    return <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: boldText }} />;
   }
 
-  const formattedText = formatBusinessPlanText(brandingStrategy?.advice || "");
+  const formattedText = formatTextWithBold(brandingStrategy?.advice || "");
   // You can style this page using Tailwind CSS classes
   return (
     <div className="  min-h-screen h-full p-4">
@@ -184,7 +161,7 @@ const BusinessProfile = async ({
       />
       <div className="bg-gray-200 rounded-lg text-sm shadow-inner py-12 px-10 max-h-[70vh] overflow-y-scroll   ">
         {/* Render your advice content here */}
-        <div dangerouslySetInnerHTML={{ __html: formattedText }} />
+       {formattedText}
       </div>
     </div>
   );

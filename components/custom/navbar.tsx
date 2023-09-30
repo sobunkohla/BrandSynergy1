@@ -9,7 +9,7 @@ import MobileSidebar from "./mobilesidebar";
 export default function NavBar() {
   const { isLoaded, isSignedIn, user } = useUser();
   return (
-    <div className="flex items-center p-4">
+    <div className="flex items-center border-b p-4">
       <MobileSidebar />
       <div className="flex w-full items-center justify-end">
         {isLoaded && isSignedIn && (

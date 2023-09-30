@@ -8,71 +8,61 @@ generator client {
 }
 
 model MarketSpace {
-  id               String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId           String
-  businessName     String
-  location         String?
-  description      String?
-  industry         String?
-  businessType     String?
-  investment       String?
-  yearFounded      Int?
-  businessGoals    String?
-  targetAudience   String?
-  productsServices String?
+  id                       String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId                   String
+  businessName             String
+  location                 String?
+  description              String?
+  industry                 String?
+  businessType             String?
+  investment               String?
+  yearFounded              Int?
+  businessGoals            String?
+  targetAudience           String?
+  productsServices         String?
   uniqueSellingProposition String?
-  team             String?
+  team                     String?
 
   // Relations
   businessStrategies BusinessStrategy[]
   brandingStrategies BrandingStrategy[]
-  userLevelProgress  UserLevelProgress?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model BusinessStrategy {
-  id            String                    @id @default(auto()) @map("_id") @db.ObjectId
-  marketSpaceId String @db.ObjectId
-  title String
-  description String?
-  type String?
-   advice     String?
-   recources String?
-  marketSpace   MarketSpace               @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  marketSpaceId String      @db.ObjectId
+  title         String
+  description   String?
+  type          String?
+  advice        String?
+  marketSpace   MarketSpace @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
-
 
 model BrandingStrategy {
-  id            String                    @id @default(auto()) @map("_id") @db.ObjectId
-  marketSpaceId String @db.ObjectId
-  title String
-  description String?
-  type String?
-   advice     String? 
-   recources String?
-  marketSpace   MarketSpace               @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  marketSpaceId String      @db.ObjectId
+  title         String
+  description   String?
+  type          String?
+  advice        String?
+  marketSpace   MarketSpace @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-
-model UserLevelProgress {
-  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
-  marketSpaceId         String  @unique @db.ObjectId
-  level                 Int // Current user level
-  requirements          Json // Requirements needed to advance to the next level
-  businessStrategyCount Int? // Number of created business strategies
-  brandingStrategyCount Int ?// Number of created branding strategies
-  lastModified          DateTime @updatedAt
-  // Additional fields if needed
-
-  // Relations
-  marketSpace MarketSpace @relation(fields: [marketSpaceId], references: [id], onDelete: Cascade)
+model PersonalDev {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String @unique
+  posts         String?
+  followers     String?
+  level         String?
+  leads         String?
+  colaborations String?
 }
