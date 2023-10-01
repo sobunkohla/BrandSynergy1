@@ -78,7 +78,7 @@ const MarketSpaceProfile = async ({
                 go to Strategies
             </Button>
             </Link> 
-        <Dialog>
+        <Dialog >
           <DialogTrigger asChild>
             <Button className="bg-orange-500 ">Delete Space</Button>
           </DialogTrigger>

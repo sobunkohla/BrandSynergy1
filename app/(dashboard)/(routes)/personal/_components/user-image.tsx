@@ -14,7 +14,7 @@ export default function UserImage({ level } : {
     <>
     {isLoaded && isSignedIn && (
         <div className="flex  items-center">
-        <Image
+        <img
         src={user.imageUrl}
         alt={`${user.username}'s profile`}
         className="w-16 h-16 rounded-full mr-4"
