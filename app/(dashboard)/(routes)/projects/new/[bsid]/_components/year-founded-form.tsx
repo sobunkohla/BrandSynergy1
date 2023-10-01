@@ -120,7 +120,7 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
                 name="yearFounded"
                 render={({ field }) => (
                     <FormItem className="flex flex-col">
-                    <FormLabel>Language</FormLabel>
+                    <FormLabel>Year founded</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
